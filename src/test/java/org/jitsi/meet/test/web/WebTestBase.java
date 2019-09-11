@@ -206,6 +206,15 @@ public class WebTestBase
         ensureThreeParticipants(null, null, null);
     }
 
+    public void ensureNParticipants(int n) {
+        for (int i = 0; i < n; i++) {
+            WebParticipant partcpt = joinParticipantAndWait(i, null, null);
+            // partcpt.waitForIceConnected();
+            // partcpt.waitForSendReceiveData();
+        }
+        ensureInfoDialogClosed();
+    }
+
     /**
      * @return the {@code id}-th participant as a {@link WebParticipant}.
      * @param id 1-based index of the participant.
