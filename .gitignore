@@ -23,3 +23,12 @@ target/
 # PSNR test sequences and output files
 resources/psnr/output/
 resources/psnr/test_sequences/
+
+# hmm not sure if we should ignore this, actually
+.settings/org.eclipse.m2e.core.prefs
+.classpath
+.project
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.jdt.apt.core.prefs
+.settings/org.eclipse.jdt.core.prefs
+.vscode/settings.json

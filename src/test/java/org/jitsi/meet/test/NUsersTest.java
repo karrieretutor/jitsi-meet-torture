@@ -91,22 +91,33 @@ public class NUsersTest
         }
 
         final int minutesToRun = Integer.valueOf(timeToRunInMin);
+        int millsToRun = 1000 * 60 * minutesToRun;
+
+
+        try {
+            Thread.sleep(millsToRun);    
+        }
+        catch (Exception e) {
+            System.out.printf("Got interrupted while waiting for NUsersTest to finish: %s\n",
+                e.toString());
+        }
+        
 
         // execute every 10 secs.
         // sometimes the check is executed once more
         // at the time while we are in a process of disposing
         // the two participants and ~9 secs before finishing successful
         // it fails.
-        int millsToRun = (minutesToRun - 1) * 60 * 1000;
-        HeartbeatTask heartbeatTask
-            = new HeartbeatTask(
-                getParticipant1(),
-                getParticipant2(),
-                millsToRun,
-                true);
+        // int millsToRun = (minutesToRun - 1) * 60 * 1000;
+        // HeartbeatTask heartbeatTask
+        //     = new HeartbeatTask(
+        //         getParticipant1(),
+        //         getParticipant2(),
+        //         millsToRun,
+        //         true);
 
-        heartbeatTask.start(10 * 1000, 10 * 1000);
+        // heartbeatTask.start(10 * 1000, 10 * 1000);
 
-        heartbeatTask.await(minutesToRun, TimeUnit.MINUTES);
+        // heartbeatTask.await(minutesToRun, TimeUnit.MINUTES);
     }
 }
